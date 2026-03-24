@@ -1,0 +1,21 @@
+.search-page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.search-container {
+    flex: 1;
+    width: 80%;
+    margin: auto;
+}
+
+.search-page h2 {
+    font-size: max(2vw, 24px);
+    font-weight: 600;
+    color: #262626;
+    margin-bottom: 20px;
+}
+.footer {
+    margin-top: auto;
+}
