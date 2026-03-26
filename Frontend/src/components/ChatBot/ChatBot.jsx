@@ -23,7 +23,7 @@ const ChatBot = () => {
                 <div className='chat-window'>
                     <div className='chat-header'>QuickBite AI Assistant</div>
                     <div className='chat-messages'>
-                        {messages.map((m, i) => <div key={i} className={m.sender}>{m.text}</div>)}
+              i          {messages.map((m, i) => <div key={i} className={m.sender}>{m.text}</div>)}
                     </div>
                     <div className='chat-input'>
                         <input value={input} onChange={(e) => setInput(e.target.value)} placeholder='Ask anything...' />
