@@ -18,9 +18,8 @@ const LoginPopup = ({ setShowLogin }) => {
         try {
 
             const url = currState === "Login"
-                ? "http://localhost:4000/api/user/login"
-                : "http://localhost:4000/api/user/register"
-
+  ? "http://localhost:4000/api/user/login"
+  : "http://localhost:4000/api/user/register"
             const response = await axios.post(url, data)
 
             if (response.data.success) {

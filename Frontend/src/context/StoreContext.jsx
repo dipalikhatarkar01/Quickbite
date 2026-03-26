@@ -16,7 +16,7 @@ const StoreContextProvider = (props) => {
   useEffect(() => {
     const fetchFoods = async () => {
       try {
-        const res = await axios.get("http://localhost:4000/api/food/list");
+        const res = await axios.get("https://quickbite-xy2y.onrender.com/api/order/place")
         if (res.data.success) {
           setFoodList(res.data.data);
         }

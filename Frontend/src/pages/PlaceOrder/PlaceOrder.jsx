@@ -44,7 +44,7 @@ const PlaceOrder = () => {
       console.log("Sending amount:", total);  // DEBUG
 
       const response = await axios.post(
-        "http://localhost:4000/api/order/stripe",
+        "https://quickbite-xy2y.onrender.com/api/order/stripe",
         { amount: total }
       );
 
