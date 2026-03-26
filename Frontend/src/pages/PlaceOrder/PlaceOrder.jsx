@@ -21,7 +21,7 @@ const PlaceOrder = () => {
     phone: ""
   })
 
-  const { getTotalCartAmount, placeOrder } = useContext(StoreContext);
+  const { getTotalCartAmount } = useContext(StoreContext);
   const navigate = useNavigate();
 
   const onChangeHandler = (event) => {
@@ -41,8 +41,6 @@ const PlaceOrder = () => {
     try {
       const total = getTotalCartAmount() + 5;
 
-      console.log("Sending amount:", total);  // DEBUG
-
       const response = await axios.post(
         "https://quickbite-xy2y.onrender.com/api/order/stripe",
         { amount: total }
@@ -60,12 +58,34 @@ const PlaceOrder = () => {
     }
   }
 
-  // 🔥 PLACE ORDER BUTTON
-  const handlePlaceOrder = () => {
-    if (method === "COD") {
-      placeOrder(data, method);
-    } else {
-      handleStripePayment();
+  // 🔥 PLACE ORDER (FINAL FIX)
+  const handlePlaceOrder = async () => {
+    try {
+      const total = getTotalCartAmount() + 5;
+
+      if (method === "COD") {
+        const response = await axios.post(
+          "https://quickbite-xy2y.onrender.com/api/order/placecod",
+          {
+            ...data,
+            amount: total
+          }
+        );
+
+        if (response.data.success) {
+          alert("Order placed successfully (COD)");
+          navigate('/');
+        } else {
+          alert("Order failed");
+        }
+
+      } else {
+        handleStripePayment();
+      }
+
+    } catch (error) {
+      console.log(error);
+      alert("Order Failed");
     }
   }
 
