@@ -13,7 +13,7 @@ const ChatBot = () => {
         setMessages([...messages, newMsg]);
         setInput("");
 
-        const response = await axios.post("http://localhost:4000/api/chat/ask", { prompt: input });
+        const response = await axios.post("https://quickbite-xy2y.onrender.com/api/chat/ask", { prompt: input });
         setMessages((prev) => [...prev, { text: response.data.message, sender: "ai" }]);
     }  
 
@@ -23,7 +23,7 @@ const ChatBot = () => {
                 <div className='chat-window'>
                     <div className='chat-header'>QuickBite AI Assistant</div>
                     <div className='chat-messages'>
-              i          {messages.map((m, i) => <div key={i} className={m.sender}>{m.text}</div>)}
+                        {messages.map((m, i) => <div key={i} className={m.sender}>{m.text}</div>)}
                     </div>
                     <div className='chat-input'>
                         <input value={input} onChange={(e) => setInput(e.target.value)} placeholder='Ask anything...' />

@@ -8,6 +8,9 @@ const FoodDisplay = ({ category, search = "", showAssets = false }) => {
 
   const { food_list } = useContext(StoreContext)
   const sectionRef = useRef(null)
+  
+  // Render Backend URL
+  const url = "https://quickbite-xy2y.onrender.com"
 
   useEffect(() => {
     if (category !== "All" && sectionRef.current) {
@@ -36,8 +39,9 @@ const FoodDisplay = ({ category, search = "", showAssets = false }) => {
           filteredFoods.map((item, index) => {
             let imageUrl = item.image
             
+            // Yahan localhost ki jagah render ka URL use ho raha hai
             if (typeof imageUrl === 'string' && !imageUrl.startsWith('http') && !imageUrl.startsWith('static') && !imageUrl.startsWith('/src')) {
-              imageUrl = `http://localhost:4000/images/${item.image}`
+              imageUrl = `${url}/images/${item.image}`
             }
 
             return (
